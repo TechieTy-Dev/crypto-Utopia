@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=DotGothic16&family=Genos:wght@400;500&family=Rubik+Glitch&family=Train+One&display=swap');
+
 * html {
   padding: 0;
   margin: 0;
@@ -10,17 +11,24 @@ body {
   font-family: "Rubik Glitch", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
+}
+::-webkit-scrollbar {
+  display: none;
 }
 
-Input{
-  font-family: "Genos"
+h3 {
+  font-family: 'DotGothic16';
 }
 
 p {
   font-family: "Genos", sans-serif;
 }
 
-
+::placeholder{
+  font-family: 'Genos';
+}
 
 .gradient-bg-welcome {
   background-color: #0f0e13;
@@ -34,6 +42,7 @@ p {
   radial-gradient(at 100% 90%, hsla(184,95.8%,46.5%,0.5) 0,transparent 50%),
     radial-gradient(at 50% 41%, hsla(225,39%,25%,1) 0, transparent 50%),
     radial-gradient(at 0% 0%, hsla(346.5,100%,54.7%, 0.7) 0, transparent 50%);
+
     
 }
 

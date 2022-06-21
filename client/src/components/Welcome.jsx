@@ -1,8 +1,12 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import '../index.css'
 import { AiFillPlayCircle } from 'react-icons/ai'
 import { SiEthereum } from 'react-icons/si';
 import { BsInfoCircle } from 'react-icons/bs';
+import {TransactionContext} from '../context/TransactionContext';
+
+
+import Loader from './Loader';
 
 
 
@@ -14,24 +18,38 @@ const Input = ({placeholder, name, type,value,  }) => (
     type={type}
     step="0.0001"
     value={value}
-    className="my-2 w-full rounded-sm p-2 outline-none bg-transparent text-white border-none text-sm white-glassmorphism"
+    className="my-2 w-full rounded-sm p-2 outline-none bg-transparent font-white text-white border-none text-sm white-glassmorphism"
   />
 );
 
 const Welcome = () => {
 
+  const { connectWallet, currentAccount, formData, sendTransation, handleChange } = useContext(TransactionContext);
+
+  const handleSubmit = (e) => {
+    const { addressTo, amount,keyword, message} = formData;
+
+    e.preventDefault();
+
+    if(!addressTo || !amount || !keyword || !message) return;
+
+    sendTransation();
+  }
+
   return (
     <div className="flex w-full justify-center items-center">
-      <div className="flex md:flex-row flex-col items-start justify-between, md:p-20 py-12 px-4">
-        <div className="flex flex-1 justify-start items-start flex-col md:mr-10">
+      <div className="flex mf:flex-row flex-col items-start justify-between, md:p-20 py-12 px-4">
+        <div className="flex flex-1 justify-start items-start flex-col mf:mr-10">
           <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1"> Send Crypto Anywhere </h1>
           <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">Buy and sell crypto with Utopia</p>
-          <button type="button" onClick="/"
+          {!currentAccount && (
+          <button type="button" onClick={!connectWallet}
           className="flex flex-row justify-center items-center my-5 bg-[#ff184c] p-3 rounded-full cursor-pointer hover:bg-[#05d9e8]">
             <AiFillPlayCircle className="text-white mr-2" />
             <p className="text-white text-base font-semibold">Connect Wallet</p>
-          </button>
-          <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
+          </button> )}
+          <div className="grid sm:grid-cols-3
+          grid-cols-2 w-full mt-10">
             <p className={`rounded-tl-2xl ${companyCommonStyles}`}>Readability</p>
             <p className={companyCommonStyles}>Security</p>
             <p className={`sm:rouned-bl-2xl ${companyCommonStyles}`}>Ethereum</p>
@@ -42,7 +60,7 @@ const Welcome = () => {
           </div>
         </div>
 
-      <div className="flex flex-1 flex-col items-center justify-start w-full md:mt-0 mt-10">
+      <div className="flex flex-1 flex-col items-center justify-start w-full mf:mt-0 mt-10">
         <div className="p-3 flex justify-end items-start flex-col rounded-xl h-40 sm:w-72 w-full my-5 eth-card white-glassmorphism">
           <div className="flex justify-between flex-col w-full h-full">
             <div className="flex justify-between items-start">
@@ -58,12 +76,22 @@ const Welcome = () => {
           </div>
           </div>
           <div className="p-5 sm:w-96 w-full flex flex-col justify-start items-start blue-glassmorphism">
-            <Input placeholder="Address To" name="addressTo" type="text" />
-            <Input placeholder="Amount (ETH)" name="amount" type="number" />
-            <Input placeholder="Keyword (GIF)" name="keyword" type="text" />
-            <Input placeholder="Enter Message" name="message" type="text" />
+            <Input placeholder="Address To" name="addressTo" type="text" handleChange={handleChange} />
+            <Input placeholder="Amount (ETH)" name="amount" type="number" handleChange={handleChange} />
+            <Input placeholder="Keyword (GIF)" name="keyword" type="text" handleChange={handleChange} />
+            <Input placeholder="Enter Message" name="message" type="text" handleChange={handleChange} />
 
             <div className="h-[1px] w-full bg-gray-300 my-2" />
+
+            {false ? (
+              <Loader />
+            ) : (
+          <button type="button"
+          className="text-black w-full mt-2 p-2 bg-[#ff184c] hover:bg-[#05d9e8] rounded-full cursor-pointer"
+          onClick={handleSubmit}>
+            Send Now
+          </button>
+            )}
           </div>
         </div>
       </div>
