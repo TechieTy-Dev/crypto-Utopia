@@ -17,8 +17,11 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
+h3{
+  font-family: 'Train One';
+}
 
-h3 {
+h2 {
   font-family: 'DotGothic16';
 }
 
