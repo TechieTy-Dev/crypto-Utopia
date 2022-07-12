@@ -46,7 +46,7 @@ const Welcome = () => {
           {/* Heading Copy */}
 
           <h1 className="text-3xl sm:text-5xl text-white text-gradient py-1"> Send Crypto Anywhere </h1>
-          <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">Buy and sell crypto with Utopia</p>
+          <p className="text-left mt-5 text-white font-light md:w-9/12 w-11/12 text-base">Securely send Crypto anywhere in the world with extreme speed. Low Ethereum fees on Swaps, Trading and our Marketplace. Come Join Utopia! </p>
 
           {/* Connect Wallet Button */}
 
@@ -61,12 +61,12 @@ const Welcome = () => {
           {/* Grid */}
 
           <div className="grid sm:grid-cols-3 grid-cols-2 w-full mt-10">
-            <div className={`rounded-tl-2xl ${companyCommonStyles}`}>Readability</div>
-            <div className={companyCommonStyles}>Security</div>
-            <div className={`sm:rounded-tr-2xl ${companyCommonStyles}`}>Ethereum</div>
+            <div className={`rounded-tl-2xl ${companyCommonStyles}`}>Readability and Accessible to All</div>
+            <div className={companyCommonStyles}>Mars Security Protected </div>
+            <div className={`sm:rounded-tr-2xl ${companyCommonStyles}`}>Ethereum-Based Chain</div>
             <div className={`sm:rounded-bl-2xl ${companyCommonStyles}`}>Web 3.0</div>
-            <div className={companyCommonStyles}>Low Fees </div>
-            <div className={`rounded-br-2xl ${companyCommonStyles}`}>Blockchain</div>
+            <div className={companyCommonStyles}>Low Fees</div>
+            <div className={`rounded-br-2xl ${companyCommonStyles}`}>Layer 2 Blockchain</div>
           </div> 
         </div>
       
